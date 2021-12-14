@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Appointment</h2>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li style="color:red">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        <form action="/add" class="col s12" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="date" type="date" class="validate" name="date">
+                    <label for="task">Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="task" type="text" class="validate" name="task">
+                    <label for="task">Task</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="status">Status:</label>
+                    <select id="cars" name="cars">
+                        <option value="Pending">Pending</option>
+                        <option value="Missed">Missed</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
+            </div>
+            <a href="/appoint"> Cancel </a>
+            <input type="submit" name="add" value="Add">
+      </form>
+    
+</body>
+</html>
